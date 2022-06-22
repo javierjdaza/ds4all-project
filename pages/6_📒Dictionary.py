@@ -2,8 +2,8 @@ import streamlit as st
 
 
 st.set_page_config(page_title='DS4A: Marymount',layout='wide',page_icon="./images/marymount_favicon.ico")#,initial_sidebar_state="collapsed")
-# hide_streamlit_style = """<style>#MainMenu {visibility:hidden;}footer {visibility:hidden;}</style>"""
-# st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
+hide_streamlit_style = """<style>#MainMenu {visibility:hidden;}footer {visibility:hidden;}</style>"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 
 col1,col2,col3,col4 = st.columns(4)
 
