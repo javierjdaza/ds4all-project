@@ -35,7 +35,7 @@ def text_center_light(texto:str):
 
 st.title('About the School')
 st.write('----')
-st.write("""The Marymount School - Barranquilla is a private, mixed and bilingual institute in Barranquilla City.\n 
+st.write("""The Marymount School -Barranquilla is a private, mixed and bilingual institute in Barranquilla City.\n 
 The objective of the school is to educate leaders who are capable of embarking on a transformative life project in a 
 globalized society through high quality education. One of the most important meassures of success meters is the results 
 of 'Pruebas Saber 11', a standardized state test administered by the Colombian government to all students in grade 11 
