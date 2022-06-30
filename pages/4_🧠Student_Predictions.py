@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import plotly.express as px
 
 
 st.set_page_config(page_title='DS4A: Marymount',layout='wide',page_icon="./images/marymount_favicon.ico")#,initial_sidebar_state="collapsed")
@@ -21,49 +22,6 @@ def make_prediction(df_input:pd.DataFrame,model:joblib):
     elif predict ==1:
         text_result = f'According to the features inputed, the student will have a Saber 11 Score above 340 with a probability of: {predict_proba}%'
         st.success(text_result)
-
-
-df = pd.read_csv('./data/marymount_dataset_transformed.csv')
-del df['target']
-
-col1,col2,col3,col4 = st.columns(4)
-
-with col1:
-    st.image('./images/marymount_logo.png')
-with col4:
-    st.image('./images/correlation.png')
-st.write('----')
-
-
-def put_graph(file_path:str, title:str):
-    st.subheader(title)
-    st.markdown('#')
-    st.image(file_path)
-
-st.title('Student Predictions 🧠')
-st.write('---')
-
-student_expander = st.expander('Student Prediction')
-new_student_expander = st.expander('New Student Prediction')
-
-
-
-with student_expander:
-    col1,col2,col3 = st.columns(3)
-    st.write('---')
-    col4,col5 = st.columns(2)
-    col6,col7 = st.columns(2)
-    with col2:
-        student_code = st.text_input('Enter Student Code', placeholder = '20210122')
-
-    with col4:
-        put_graph(file_path = './graphs/spider_graph.png', title = 'Spyder Chart')
-    with col5:
-        put_graph(file_path = './graphs/kmeans_graph.jpeg', title = 'Segmentation Chart')
-    with col6:
-        put_graph(file_path = './graphs/line_graph.png', title = 'Line Chart')
-            
-
 
 def create_column_feature_drill(name):
     min_value = 0
@@ -109,6 +67,72 @@ def create_column_feature_absences(name):
     
     slider = st.slider(name_display, min_value=min_value, max_value=max_value, value = int(df[name].mean()))
     return slider
+
+def put_graph(file_path:str, title:str):
+    st.subheader(title)
+    st.markdown('#')
+    st.image(file_path)
+
+df = pd.read_csv('./data/marymount_dataset_transformed.csv')
+del df['target']
+
+col1,col2,col3,col4 = st.columns(4)
+
+with col1:
+    st.image('./images/marymount_logo.png')
+with col4:
+    st.image('./images/correlation.png')
+st.write('----')
+
+
+
+st.title('Student Predictions 🧠')
+st.write('---')
+
+student_expander = st.expander('Student Prediction')
+new_student_expander = st.expander('New Student Prediction')
+
+
+
+with student_expander:
+    col1,col2,col3 = st.columns(3)
+    st.write('---')
+    col4,col5 = st.columns(2)
+    
+    # p1,p2 = st.columns(2)
+    st.write('---')
+    with col2:
+        student_code = st.text_input('Enter Student Code', placeholder = '20032002',value = '20022028')
+
+    # with col4:
+    #     put_graph(file_path = './graphs/spider_graph.png', title = 'Spyder Chart')
+    # with col5:
+    #     put_graph(file_path = './graphs/kmeans_graph.jpeg', title = 'Segmentation Chart')
+    # with col6:
+    #     put_graph(file_path = './graphs/line_graph.png', title = 'Line Chart')
+    if student_code in [str(i) for i in df['codigo'].to_list()]:
+        df_polar = df.copy()
+        df_polar.fillna(0,inplace=True)
+        df_polar['codigo'] = df_polar['codigo'].apply(lambda x: str(x))
+        df_polar = df_polar[df_polar['codigo'] == student_code]
+        st.write('Scores of the Student Selected')
+        st.dataframe(df_polar)
+        p1,p2,p3,p4,p5,p6 = st.columns((1,1,1,4,1,1))
+        with p3:  
+            
+
+            for i in df_polar.columns:
+                df_polar[i] = df_polar[i].apply(lambda x: int(x))
+            del df_polar['codigo']
+            df_polar = df_polar.T.reset_index()
+            df_polar.columns = ['theta','r']
+            # st.dataframe(df_polar)
+            fig = px.line_polar(df_polar, r='r', theta='theta', line_close=False,  width=750, height=750)
+            fig.update_traces(fill='toself')
+
+            st.plotly_chart(fig, use_container_width=False)
+    else:
+        st.warning('Please Select a valid Student Code')
 
 with new_student_expander:
     st.subheader('Setup the values for make the prediction')
