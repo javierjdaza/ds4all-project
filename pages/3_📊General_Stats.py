@@ -25,15 +25,40 @@ st.write('---')
 col1,col2 = st.columns(2)
 st.write('---')
 col3,col4 = st.columns(2)
+st.write('---')
+col5,col6 = st.columns(2)
+st.write('---')
+col7,col8 = st.columns((20,1))
+st.write('---')
+col9,col10 = st.columns(2)
+st.write('---')
+col11,col12 = st.columns((20,1))
 
 with col1:
-    put_graph(file_path = './graphs/bar_graph.png', title = 'Bar Chart')
+    put_graph(file_path = './charts/Results of "Saber 11" test per school year.png', title = 'Results of "Saber 11" test per school year')
 with col2:
-    put_graph(file_path = './graphs/horizontal_bar_graph.png', title = 'Horizontal Chart')
+    put_graph(file_path = './charts/Global results of "Pruebas saber 11" test per school year.png', title = 'Global results of "Pruebas saber 11" test per school year')
+    
 
 
 with col3:
-    put_graph(file_path = './graphs/heatmap_graph.png', title = 'Correlation HeatMap')
+    put_graph(file_path = './charts/Comparison Global results of "Saber 11" test.png', title = 'Comparison Global results of "Saber 11" test')
 with col4:
-    put_graph(file_path = './graphs/correlation_graph.png', title = 'Correlation Scatter Chart')
+    put_graph(file_path = './charts/Number of students per School year in "Saber 11" test.png', title = 'Number of students per School year in "Saber 11" test')
+
+with col5:
+    put_graph(file_path = './charts/Results of drill test per Subjects by school year.png', title = 'Results of drill test per Subjects by school year')
+with col6:
+    put_graph(file_path = './charts/Comparative of Grade 11th vs Grade 12th Drill test results.png', title = 'Comparative of Grade 11th vs Grade 12th Drill test results')
+
+with col7:
+    put_graph(file_path = './charts/grades_reports.png', title = 'Grades Reports')
+
+with col9:
+    put_graph(file_path = './charts/PSAT results per School year.png', title = 'PSAT results per School year')
+with col10:
+    put_graph(file_path = './charts/Combined results of PSAT test.png', title = 'Combined results of PSAT test')
+
+with col11:
+    put_graph(file_path = './charts/Correlations between "Saber 11" test results and performance of subjects, drill test and PSAT test.png', title = 'Correlations between "Saber 11" test results and performance of subjects, drill test and PSAT test')
 
