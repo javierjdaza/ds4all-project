@@ -41,7 +41,7 @@ globalized society through high quality education. One of the most important mea
 of 'Pruebas Saber 11', a standardized state test administered by the Colombian government to all students in grade 11 
 (grade 12 at Marymount School), which evaluates educational quality and is also used as a criterion for acceptance into universities
  and other higher education institutions. \n 
- In the last two years the students performance has been decreasing in this test and the 
+ In the last three years the students performance has been decreasing in this test and the 
  school wants to improve and make decisions to help its students with their learning outcomes.""")
 
 # st.sidebar.header("Mapping Demo")

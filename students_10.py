@@ -48,7 +48,7 @@ def student_10():
             for i in resultados_prediccion_good.to_dict(orient = 'records'):
                 materia = i['materia']
                 predict_proba = i['predict_proba']
-                st.success(f'{materia}  \n  With probability of {round(predict_proba,3)}%')
+                st.success(f'{materia}  \n  With probability of {round(predict_proba*100,3)}%')
 
         if len(resultados_prediccion_bad) > 0:
             st.write('The following subjects the student will have "Saber 11" Score below than 60 ')
@@ -56,10 +56,10 @@ def student_10():
                 materia = i['materia']
                 if materia == 'Ingles':
                     predict_proba = i['predict_proba']
-                    st.warning(f'{materia}  \n  With probability of aim Score Above 80 of {round(predict_proba,3)}%')
+                    st.warning(f'{materia}  \n  With probability of aim Score Above 80 of {round(predict_proba*100,3)}%')
                 else:
                     predict_proba = i['predict_proba']
-                    st.warning(f'{materia}  \n  With probability of aim Score Above 60 of {round(predict_proba,3)}%')
+                    st.warning(f'{materia}  \n  With probability of aim Score Above 60 of {round(predict_proba*100,3)}%')
 
 
         # st.dataframe(resultados_prediccion)

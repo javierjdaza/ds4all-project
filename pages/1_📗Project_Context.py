@@ -25,7 +25,7 @@ taking into account all their academic grades, as well as the grades of the stan
 st.markdown('#')
 
 st.markdown('''
-**Business Problem:**  \n  Define an Alert System which enables the Marymount school to identify areas for improvement in order to avoid detecting poor results on state test (Pruebas saber 11) for 7th to 12th grade students.''')
+**Business Problem:**  \n  Define an Alert System which enables the Marymount school to identify areas for improvement in order to avoid detecting poor results on state test (Pruebas saber 11) for 10th to 12th grade students.''')
 st.markdown('#')
 st.markdown('''**Analytical Context.**   \n  The school has 5 csv files containing details about results of "Prueba Saber 11" test,
 preparations for "Pruebas Saber 11", PSAT test, grades for all subject and student's list from 2017-2018 until 2021-2022 school year.''')
