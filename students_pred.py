@@ -1,3 +1,4 @@
+from matplotlib.pyplot import margins
 import streamlit as st
 import pandas as pd
 import joblib
@@ -78,7 +79,7 @@ def student():
         student_code = st.text_input('Enter Student Code', placeholder = '20042003',value = '20042003')
     
     with col3:
-        year = st.text_input('Enter Student Year', placeholder = '11',value = '11')
+        year = st.text_input('Enter Student Grade', placeholder = '11',value = '11')
   
 
 
@@ -116,8 +117,11 @@ def student():
             df_polar = df_polar.T.reset_index()
             df_polar.columns = ['theta','r']
             # st.dataframe(df_polar)
-            fig = px.line_polar(df_polar, r='r', theta='theta', line_close=False,  width=750, height=750)
+            fig = px.line_polar(df_polar, r='r', theta='theta', line_close=False,  width=750, height=750, )
             fig.update_traces(fill='toself')
+            fig.update_layout(
+                margin=dict(l=150, r=150, t=20, b=20),
+            )
 
             st.plotly_chart(fig, use_container_width=False)
     else:

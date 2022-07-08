@@ -90,16 +90,16 @@ st.write('----')
 st.title('Student Predictions 🧠')
 st.write('---')
 
-selected = option_menu(menu_title=None,options = ["Student Prediction","Students Year: 10", 'Students Year: 11','Students Year: 12'], 
+selected = option_menu(menu_title=None,options = ["Student Prediction","Students Grade: 10", 'Students Grade: 11','Students Grade: 12'], 
 icons = ["columns-gap","file-earmark-person", "file-earmark-person","file-earmark-person",] ,default_index = 0,orientation="horizontal")
 st.write('---')
 
 
-if selected == 'Students Year: 10':
+if selected == 'Students Grade: 10':
     student_10()
-if selected == 'Students Year: 11':
+if selected == 'Students Grade: 11':
     student_11()
-if selected == 'Students Year: 12':
+if selected == 'Students Grade: 12':
     student_12()
 if selected == 'Student Prediction':
     student()
