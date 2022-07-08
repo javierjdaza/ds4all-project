@@ -44,7 +44,7 @@ def student_12():
         resultados_prediccion_good = resultados_prediccion[resultados_prediccion['predict'] == 1]
         resultados_prediccion_bad = resultados_prediccion[resultados_prediccion['predict'] == 0]
         if len(resultados_prediccion_good) > 0:
-            st.write('The following subjects the student will achieve score more than 60 in the "Saber Pro"')
+            st.write('The following subjects the student will achieve score more than 60 in the "Saber 11"')
             for i in resultados_prediccion_good.to_dict(orient = 'records'):
                 materia = i['materia']
                 predict_proba = i['predict_proba']

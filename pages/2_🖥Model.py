@@ -7,8 +7,38 @@ hide_streamlit_style = """<style>#MainMenu {visibility: hidden;}footer {visibili
 st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 
 
-
-
+st.cache()
+def put_graphs_metrics(datasets_strings,dict_datos):
+    for i in datasets_strings:
+        for j in dict_datos:
+            if list(j.keys())[0] == i:
+                st.subheader(list(j.keys())[0])
+                st.markdown('#')
+                g1,g2,g3,g4 = st.columns(4)
+                cp1,cp2,cp3 = st.columns(3)
+                st.markdown('#')
+                
+                sep1,sep2,sep3 = st.columns(3)
+                with sep2:
+                    st.write('➖'*20)
+                t1,t2 = st.columns((5,1))
+                
+                c1,c2,c3,c4,c5 = st.columns(5)
+                st.write('---')
+                with g2:
+                    cm = j[i][0]
+                    st.image( cm, use_column_width=False)
+                with cp2:
+                    st.caption('Confusion Matrix')
+                with t1:
+                    st.markdown('#')
+                    fi = j[i][1]
+                    st.image( os.path.join(os.getcwd(), fi), use_column_width=True)
+                with c3:
+                    st.caption('Feature Importance')
+                # with g3:
+                #     metrics = j[i][2]
+                #     st.image( os.path.join(os.getcwd(), metrics), use_column_width=True)
 
 col1,col2,col3,col4 = st.columns(4)
 
@@ -363,7 +393,7 @@ with st.expander('Code Part 🧩'):
     ''')
 
 with st.expander('Results 👨‍💻'):
-
+    
     datasets_strings = [
     'df_10_MATH',
     'df_10_LECT',
@@ -382,42 +412,25 @@ with st.expander('Results 👨‍💻'):
     'df_12_SOCIALES' ]
 
 
-    dict_datos = [{'df_10_MATH': ['./graphs/metrics graphs/df_10_MATH_cm.png','./graphs/metrics graphs/df_10_MATH_fi.png','./graphs/metrics graphs/df_10_MATH_metrics.png']},
-    {'df_10_LECT': ['./graphs/metrics graphs/df_10_LECT_cm.png','./graphs/metrics graphs/df_10_LECT_fi.png','./graphs/metrics graphs/df_10_LECT_metrics.png']},
-    {'df_10_INGLES': ['./graphs/metrics graphs/df_10_INGLES_cm.png','./graphs/metrics graphs/df_10_INGLES_fi.png','./graphs/metrics graphs/df_10_INGLES_metrics.png']},
-    {'df_10_CIENCIAS': ['./graphs/metrics graphs/df_10_CIENCIAS_cm.png','./graphs/metrics graphs/df_10_CIENCIAS_fi.png','./graphs/metrics graphs/df_10_CIENCIAS_metrics.png']},
-    {'df_10_SOCIALES': ['./graphs/metrics graphs/df_10_SOCIALES_cm.png','./graphs/metrics graphs/df_10_SOCIALES_fi.png','./graphs/metrics graphs/df_10_SOCIALES_metrics.png']},
-    {'df_11_MATH': ['./graphs/metrics graphs/df_11_MATH_cm.png','./graphs/metrics graphs/df_11_MATH_fi.png','./graphs/metrics graphs/df_11_MATH_metrics.png']},
-    {'df_11_LECT': ['./graphs/metrics graphs/df_11_LECT_cm.png','./graphs/metrics graphs/df_11_LECT_fi.png','./graphs/metrics graphs/df_11_LECT_metrics.png']},
-    {'df_11_INGLES': ['./graphs/metrics graphs/df_11_INGLES_cm.png','./graphs/metrics graphs/df_11_INGLES_fi.png','./graphs/metrics graphs/df_11_INGLES_metrics.png']},
-    {'df_11_CIENCIAS': ['./graphs/metrics graphs/df_11_CIENCIAS_cm.png','./graphs/metrics graphs/df_11_CIENCIAS_fi.png','./graphs/metrics graphs/df_11_CIENCIAS_metrics.png']},
-    {'df_11_SOCIALES': ['./graphs/metrics graphs/df_11_SOCIALES_cm.png','./graphs/metrics graphs/df_11_SOCIALES_fi.png','./graphs/metrics graphs/df_11_SOCIALES_metrics.png']},
-    {'df_12_MATH': ['./graphs/metrics graphs/df_12_MATH_cm.png','./graphs/metrics graphs/df_12_MATH_fi.png','./graphs/metrics graphs/df_12_MATH_metrics.png']},
-    {'df_12_LECT': ['./graphs/metrics graphs/df_12_LECT_cm.png','./graphs/metrics graphs/df_12_LECT_fi.png','./graphs/metrics graphs/df_12_LECT_metrics.png']},
-    {'df_12_INGLES': ['./graphs/metrics graphs/df_12_INGLES_cm.png','./graphs/metrics graphs/df_12_INGLES_fi.png','./graphs/metrics graphs/df_12_INGLES_metrics.png']},
-    {'df_12_CIENCIAS': ['./graphs/metrics graphs/df_12_CIENCIAS_cm.png','./graphs/metrics graphs/df_12_CIENCIAS_fi.png','./graphs/metrics graphs/df_12_CIENCIAS_metrics.png']},
-    {'df_12_SOCIALES': ['./graphs/metrics graphs/df_12_SOCIALES_cm.png','./graphs/metrics graphs/df_12_SOCIALES_fi.png','./graphs/metrics graphs/df_12_SOCIALES_metrics.png']}]
+    dict_datos = [{'df_10_MATH': ['./graphs/metrics graphs/df_10_MATH_cm.png','./graphs/metrics graphs/df_10_MATH_fi.png']},
+    {'df_10_LECT': ['./graphs/metrics graphs/df_10_LECT_cm.png','./graphs/metrics graphs/df_10_LECT_fi.png']},
+    {'df_10_INGLES': ['./graphs/metrics graphs/df_10_INGLES_cm.png','./graphs/metrics graphs/df_10_INGLES_fi.png']},
+    {'df_10_CIENCIAS': ['./graphs/metrics graphs/df_10_CIENCIAS_cm.png','./graphs/metrics graphs/df_10_CIENCIAS_fi.png']},
+    {'df_10_SOCIALES': ['./graphs/metrics graphs/df_10_SOCIALES_cm.png','./graphs/metrics graphs/df_10_SOCIALES_fi.png']},
+    {'df_11_MATH': ['./graphs/metrics graphs/df_11_MATH_cm.png','./graphs/metrics graphs/df_11_MATH_fi.png']},
+    {'df_11_LECT': ['./graphs/metrics graphs/df_11_LECT_cm.png','./graphs/metrics graphs/df_11_LECT_fi.png']},
+    {'df_11_INGLES': ['./graphs/metrics graphs/df_11_INGLES_cm.png','./graphs/metrics graphs/df_11_INGLES_fi.png']},
+    {'df_11_CIENCIAS': ['./graphs/metrics graphs/df_11_CIENCIAS_cm.png','./graphs/metrics graphs/df_11_CIENCIAS_fi.png']},
+    {'df_11_SOCIALES': ['./graphs/metrics graphs/df_11_SOCIALES_cm.png','./graphs/metrics graphs/df_11_SOCIALES_fi.png']},
+    {'df_12_MATH': ['./graphs/metrics graphs/df_12_MATH_cm.png','./graphs/metrics graphs/df_12_MATH_fi.png']},
+    {'df_12_LECT': ['./graphs/metrics graphs/df_12_LECT_cm.png','./graphs/metrics graphs/df_12_LECT_fi.png']},
+    {'df_12_INGLES': ['./graphs/metrics graphs/df_12_INGLES_cm.png','./graphs/metrics graphs/df_12_INGLES_fi.png']},
+    {'df_12_CIENCIAS': ['./graphs/metrics graphs/df_12_CIENCIAS_cm.png','./graphs/metrics graphs/df_12_CIENCIAS_fi.png']},
+    {'df_12_SOCIALES': ['./graphs/metrics graphs/df_12_SOCIALES_cm.png','./graphs/metrics graphs/df_12_SOCIALES_fi.png']}]
+
+    put_graphs_metrics(datasets_strings,dict_datos)
 
 
-
-
-    for i in datasets_strings:
-        for j in dict_datos:
-            if list(j.keys())[0] == i:
-                st.subheader(list(j.keys())[0])
-                st.markdown('#')
-                col1,col2,col3 = st.columns(3)
-                st.write('---')
-                with col1:
-                    cm = j[i][0]
-                    st.image( cm, use_column_width=True)
-                with col2:
-                    fi = j[i][1]
-                    st.image( os.path.join(os.getcwd(), fi), use_column_width=True)
-                with col3:
-                    metrics = j[i][2]
-                    st.image( os.path.join(os.getcwd(), metrics), use_column_width=True)
-                    # print(cm,fi,metrics)
 
 with st.expander('Lets Play with models 🎲'):
 
