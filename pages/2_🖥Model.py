@@ -433,7 +433,7 @@ with st.expander('Results 👨‍💻'):
     st.write('''On the x-axis you can find the value predicted by the model and on the y-axis the value of the real values of the data with which the model was trained, a good result is when the data is located on the diagonal because it implies that correctly predicted the actual value.''')
     st.subheader('Feature importance')
     st.write(' ')
-    st.write('''This graph allows you to analyze for each grade and subject of knowing 11 which variables (subjects, PSAT test or subjects in drill test) are key to obtaining a good result in the subject of knowing 11. This information will allow teachers and administrators to take decisions at the grade level about what strategies to apply in the subjects presented in the graph to improve their results and as a consequence improve test results know 11''')
+    st.write('''This graph allows you to analyze for each grade and Saber 11 subject which variables (subjects, PSAT test or subjects in drill test) are key to obtaining a good result in the Saber 11 subject. This information will allow teachers and administrators to make decisions at the grade level about what strategies to apply in the subjects presented in the graph to improve their results and, as a consequence, improve the results of the "Saber 11" tests.''')
     st.write('---')
 
     put_graphs_metrics(datasets_strings,dict_datos)
